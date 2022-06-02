@@ -60,7 +60,7 @@ function game()
         const playerSelection = playerPlay();
         const computerSelection = computerPlay();
         result_ = playRound(playerSelection, computerSelection);
-        console.log(result_)
+        // console.log(result_)
     }
 }
 
