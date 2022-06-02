@@ -1,76 +1,67 @@
-let computerSelection;
-let playerSelection;
+// Computer selecting the output from Rock, Paper and Scissor
 
-
-
-function computerPlay()
+function computerPlay() 
 {
-    const items = ['rock', 'paper', 'scissor'];
-
-    const random = Math.floor(Math.random() * items.length);
-    console.log(items[random]);
-    computerSelection = (items[random]);
+    let computerSelection;
+    const rock_paper_array = ['rock', 'paper', 'scissor'];
+    const select_random = Math.floor(Math.random()*rock_paper_array.length);
+    computerSelection = (rock_paper_array[select_random]);
+    console.log(computerSelection)
+    return computerSelection
 }
 
-computerPlay()
+// Prompting for user to give a input
 
 function playerPlay()
 {
-    playerSelection = window.prompt("Choose from Rock, Paper and scissor.")
-    playerSelection = playerSelection.toLowerCase();
+    let playerSelection;
+    selection_prompt = window.prompt("Choose from Rock, Paper and Scissor.")
+    playerSelection = selection_prompt.toLowerCase();
     console.log(playerSelection)
+    return playerSelection
 }
 
-playerPlay()
 
-// WORKING CODE FOR PRODUCING END RESULT
+// Checking the Winner
 
-// if ( computerSelection == playerSelection)
-//     console.log('Draw,you both choose ' + computerSelection);
-
-// else if (
-//         computerSelection == "rock" && playerSelection == "scissor" ||
-//         computerSelection == "paper" && playerSelection == "rock" ||
-//         computerSelection == "scissor" && playerSelection == "paper"
-//         )
-//         console.log('Computer Win !')
-
-// else if (
-//         computerSelection == "rock" && playerSelection == "paper" ||
-//         computerSelection == "paper" && playerSelection == "scissor" ||
-//         computerSelection == "scissor" && playerSelection == "rock"
-//         )
-//         console.log('Player Win!')
-
-
-// else
-//     console.log('Wrong Input!!!');
-
-
-    
-function playOnce(playerSelection,computerSelection)
+function playRound( playerSelection, computerSelection)
 {
-    if ( computerSelection == playerSelection)
-    console.log('Draw,you both choose ' + computerSelection);
+    if (playerSelection == computerSelection)
+    {
+        console.log('Draw!!! ')
+    }
+    else if (
+        playerSelection == 'rock' && computerSelection == 'paper' ||
+        playerSelection == 'paper' && computerSelection == 'scissor' ||
+        playerSelection == 'scissor' && computerSelection == 'rock' )
+    {
+        console.log('You Lose!' + computerSelection + ' beats ' + playerSelection)
+    }
 
-else if (
-        computerSelection == "rock" && playerSelection == "scissor" ||
-        computerSelection == "paper" && playerSelection == "rock" ||
-        computerSelection == "scissor" && playerSelection == "paper"
-        )
-        // return 'You Lose ! '+ computerSelection + ' Beats ' + playerSelection
-        console.log('You Lose! '+ computerSelection + ' Beats ' + playerSelection)
-
-else if (
-        computerSelection == "rock" && playerSelection == "paper" ||
-        computerSelection == "paper" && playerSelection == "scissor" ||
-        computerSelection == "scissor" && playerSelection == "Rock"
-        )
-        // return 'You Win ! '+ (playerSelection) + ' Beats ' + computerSelection
-        console.log('You Win! '+ playerSelection + ' Beats ' + computerSelection)
-
-else
-    console.log('Wrong Input!!!');   
+    else if (
+        playerSelection == 'paper' && computerSelection == 'rock' ||
+        playerSelection == 'scissor' && computerSelection == 'paper' ||
+        playerSelection == 'rock' && computerSelection == 'scissor' )
+    {
+        console.log('You Win!' + playerSelection + ' beats ' + computerSelection)
+    }
+    else 
+    {
+        console.log('Choose from Rock, Paper and Scissor ONLY.')
+    }
 }
 
-playOnce(playerSelection,computerSelection)
+// Function to play rounds of game
+
+function game()
+{
+    for( let rounds = 0; rounds < 5; rounds++)
+    {
+        const playerSelection = playerPlay();
+        const computerSelection = computerPlay();
+        result_ = playRound(playerSelection, computerSelection);
+        console.log(result_)
+    }
+}
+
+game()
