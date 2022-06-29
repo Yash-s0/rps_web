@@ -11,6 +11,16 @@ h2{
     color: rgb(0, 0, 0);
 }
 
+h3{
+    font-size: 20px;
+}
+
+.score{
+    font-size: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
 button{
     margin-top: 15px;
     font-size: 30px;
@@ -45,7 +55,7 @@ footer{
     justify-content: center;
     min-height:25px;
     background:rgb(131, 159, 120);
-    margin-top: 330px;
+    margin-top: 220px;
 }
 
 table{
